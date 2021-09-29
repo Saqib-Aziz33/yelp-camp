@@ -1,0 +1,39 @@
+<main class="container my-5">
+
+        <h2 class="text-center display-5 fw-bold">New Campground</h2>
+        <form class="new-form" action="/campgrounds" method="POST">
+            <div class="my-3">
+                <label class="form-label" for="title">Title</label>
+                <input class="form-control" required type="text" name="campground[title]" id="title" placeholder="Enter campground title">
+            </div>
+            <div class="my-3">
+                <label class="form-label" for="location">Location</label>
+                <input class="form-control" required type="text" name="campground[location]" id="location" placeholder="eg, Phagwari, Rawalpindi">
+            </div>
+            <div class="my-3">
+                <label class="form-label" for="image">Image URL</label>
+                <input class="form-control" required type="text" name="campground[image]" id="image" placeholder="Enter Image Url here">
+            </div>
+            <div class="my-3">
+                <label class="form-label" for="price">Price</label>
+                <div class="input-group">
+                    <span class="input-group-text">&dollar;</span>
+                    <input class="form-control" required type="text" name="campground[price]" id="price" placeholder="0.00">
+                </div>
+            </div>
+            <div class="my-3">
+                <label class="form-label" for="description">Description</label>
+                <textarea class="form-control" name="campground[description]" id="description" placeholder="Describe about your campground...." cols="30" rows="5"></textarea>
+            </div>
+
+            <button class="btn btn-primary">Add Campground</button>
+        </form>
+
+</main>
+
+<script>
+    const navLink = document.getElementById(`nav-new`);
+    window.addEventListener(`load`, () => {
+        navLink.classList.add(`nav-active`);
+    })
+</script>

@@ -1,0 +1,42 @@
+<main class="container my-5">
+    <div class="row my-2">
+        <div class="col-md-6">
+            <h1><%= campground.title %> </h1>
+            <h2><%= campground.location %></h2>
+            <br>
+            <p><%= campground.description %></p>
+            <p>$ <%= campground.price %>/night</p>
+        </div>
+        <div class="col-md-6">
+            <img class="img-fluid" src="<%=campground.image%>" alt="image loading error">
+        </div>
+    </div>
+    <a class="btn btn-dark" href="/campgrounds">Back</a>
+    <a class="btn btn-dark" href="/campgrounds/<%=campground.id%>/edit">Edit</a>
+    <br>
+    <br>
+
+    <!-- delete btn -->
+    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delModal">
+        Delete
+    </button>
+    <!-- modal -->
+    <div class="modal" tabindex="-1" id="delModal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Sure you want to delete</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form class="d-inline" method="POST" action="/campgrounds/<%=campground.id%>?_method=DELETE">
+                    <button class="btn btn-danger">Delete</button>
+                </form>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancle</button>
+            </div>
+          </div>
+        </div>
+      </div>      
+    <!-- ends -->
+    
+</main>

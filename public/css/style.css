@@ -1,0 +1,34 @@
+
+:root{
+    --clr-dark: #252422;
+    --clr-orange : #eb5b25;
+    --clr-cream : #fffcf2;
+    --clr-li8-dark: #403d39;
+}
+
+
+/* nav */
+.nav-active{
+    color: var(--clr-cream) !important;
+}
+
+/* new campground */
+.new-form{
+    max-width: 500px;
+    margin: auto;
+}
+
+
+/* bootstrap */
+.btn-danger{
+    background-color: var(--clr-orange);
+}
+.btn-dark{
+    background-color: var(--clr-dark);
+}
+.bg-dark{
+    background-color: var(--clr-dark) !important;
+}
+.btn-secondary{
+    background-color: var(--clr-li8-dark);
+}

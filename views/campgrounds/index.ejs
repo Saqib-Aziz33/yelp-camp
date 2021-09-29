@@ -1,0 +1,30 @@
+<main class="container my-5">
+    <h1 class="display-5 fw-bold">Campgrounds</h1>
+    <br>
+    <h4><a href="/campgrounds/new">Add campground</a></h4>
+
+    <% for(let campground of campgrounds){ %> 
+    <div class="card my-2">
+        <div class="row">
+            <div class="col-md-4">
+                <img src="<%=campground.image%>" alt="image loading error" class="img-fluid">
+            </div>
+            <div class="col-md-8 card-body">
+                <h4 class="card-title"><%= campground.title %></h4>
+                <p class="card-text"><%= campground.description %></p>
+                <small class="text-muted"><%= campground.location %></small>
+                <br>
+                <br>
+                <a href="/campgrounds/<%=campground._id%>" class="card-link">Visit</a>
+            </div>
+        </div>
+    </div>
+    <% } %>
+</main>
+
+<script>
+    const navLink = document.getElementById(`nav-camp`);
+    window.addEventListener(`load`, () => {
+        navLink.classList.add(`nav-active`);
+    })
+</script>
