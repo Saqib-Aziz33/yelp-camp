@@ -32,3 +32,15 @@
 .btn-secondary{
     background-color: var(--clr-li8-dark);
 }
+
+
+
+/* review */
+.campground-review{
+    position: relative;
+}
+.campground-review .campground-review-del{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}

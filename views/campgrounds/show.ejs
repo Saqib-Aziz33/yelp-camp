@@ -1,42 +1,90 @@
 <main class="container my-5">
-    <div class="row my-2">
-        <div class="col-md-6">
-            <h1><%= campground.title %> </h1>
-            <h2><%= campground.location %></h2>
-            <br>
-            <p><%= campground.description %></p>
-            <p>$ <%= campground.price %>/night</p>
-        </div>
-        <div class="col-md-6">
-            <img class="img-fluid" src="<%=campground.image%>" alt="image loading error">
-        </div>
+  <div class="row">
+    <div class="col-md-8 mt-4 mt-md-0">
+      <img class="img-fluid" src="<%=campground.image%>" alt="image loading error">
+      <div class="my-2">
+        <h1>
+          <%= campground.title %>
+        </h1>
+        <h3>
+          <%= campground.location %>
+        </h3>
+        <br>
+        <p style="text-align: justify;">
+          <%= campground.description %>
+        </p>
+        <p>$ <%= campground.price %>/night</p>
+      </div>
+      <div>
+        <a class="btn btn-dark" href="/campgrounds">Back</a>
+        <a class="btn btn-success" href="/campgrounds/<%=campground.id%>/edit">Edit</a>
+        <!-- delete btn -->
+        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delModal">
+          Delete
+        </button>
+      </div>
     </div>
-    <a class="btn btn-dark" href="/campgrounds">Back</a>
-    <a class="btn btn-dark" href="/campgrounds/<%=campground.id%>/edit">Edit</a>
-    <br>
-    <br>
-
-    <!-- delete btn -->
-    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delModal">
-        Delete
-    </button>
-    <!-- modal -->
-    <div class="modal" tabindex="-1" id="delModal">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Sure you want to delete</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form class="d-inline" method="POST" action="/campgrounds/<%=campground.id%>?_method=DELETE">
-                    <button class="btn btn-danger">Delete</button>
-                </form>
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancle</button>
-            </div>
-          </div>
+    <div class="col-md-4 mt-4 mt-md-0">
+      <!-- review -->
+      <h2>Add a review</h2>
+      <form action="/campgrounds/<%=campground._id%>/reviews" method="POST" class="validated-form" novalidate>
+        <div class="mb-3">
+          <label class="form-label" for="rating">Rating</label>
+          <input class="form-range" type="range" name="review[rating]" min="1" max="5" required id="rating">
         </div>
-      </div>      
-    <!-- ends -->
-    
+        <div class="mb-3">
+          <label class="form-label" for="body">Review</label>
+          <textarea class="form-control" name="review[body]" id="body" rows="5" required></textarea>
+          <div class="valid-feedback">seems goods</div>
+          <div class="invalid-feedback">Feild is required</div>
+        </div>
+        <div class="mb-3">
+          <button type="submit" class="btn btn-success">Submit</button>
+        </div>
+      </form>
+
+      <!-- show reviews -->
+      <div class="my-3 border p-2">
+        <% if(campground.reviews.length){ %>
+          <% for(let review of campground.reviews){ %>
+            <div class="mb-3 campground-review">
+              <h5 class="mb-1"><strong>Rating: </strong><%= review.rating %></h5>
+              <p class="mb-1"><%= review.body %></p>
+              <!-- delete review -->
+              <form action="/campgrounds/<%=campground._id%>/reviews/<%=review._id%>?_method=DELETE" method="POST" class="campground-review-del">
+                <button type="submit" class="btn"><i class="fa fa-trash"></i></button>
+              </form>
+            </div>
+          <% } %>
+        <% }else{ %>
+          <small>No reviews yet</small>
+        <% } %>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- delete modal -->
+  <div class="modal" tabindex="-1" id="delModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Sure you want to delete</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form class="d-inline" method="POST" action="/campgrounds/<%=campground.id%>?_method=DELETE">
+            <button class="btn btn-danger">Delete</button>
+          </form>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancle</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ends -->
+
+
+
+
+
 </main>
