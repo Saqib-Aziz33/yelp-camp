@@ -1,0 +1,30 @@
+<main class="container my-5">
+
+    <h2 class="text-center display-5 fw-bold">Register</h2>
+
+    
+    <form action="/register" method="POST" novalidate class="new-form validated-form">
+        <%- include('../partials/flash') %> 
+        <div class="my-3">
+            <label class="form-label" for="username">Username</label>
+            <input class="form-control" required type="text" name="username" id="username">
+            <div class="valid-feedback">seems goods</div>
+            <div class="invalid-feedback">Feild is required</div>
+        </div>
+        <div class="my-3">
+            <label class="form-label" for="email">Email</label>
+            <input class="form-control" required type="email" name="email" id="email">
+            <div class="valid-feedback">seems goods</div>
+            <div class="invalid-feedback">Feild is required</div>
+        </div>
+        <div class="my-3">
+            <label class="form-label" for="password">Password</label>
+            <input class="form-control" required type="password" name="password" id="password">
+            <div class="valid-feedback">seems goods</div>
+            <div class="invalid-feedback">Feild is required</div>
+        </div>
+
+        <button class="btn btn-success">Register</button>
+    </form>
+
+</main>
