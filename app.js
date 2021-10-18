@@ -64,8 +64,8 @@ passport.deserializeUser(User.deserializeUser())
 app.use((req, res, next) => {
     //console.log(req.originalUrl)
     //console.log(req.session)
-    if(!['/login', '/'].includes(req.originalUrl)){
-        req.session.returnTo = req.originalUrl
+    if (!['/login', '/register', '/'].includes(req.originalUrl)) {
+        req.session.returnTo = req.originalUrl;
     }
     res.locals.currentUser = req.user
     res.locals.success = req.flash('success')

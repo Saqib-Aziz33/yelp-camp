@@ -14,12 +14,12 @@
 
 /* new campground */
 .new-form{
-    max-width: 500px;
+    max-width: 600px;
     margin: auto;
 }
 
 
-/* bootstrap */
+/* bootstrap 
 .btn-danger{
     background-color: var(--clr-orange);
 }
@@ -32,7 +32,7 @@
 .btn-secondary{
     background-color: var(--clr-li8-dark);
 }
-
+*/
 
 
 /* review */
