@@ -44,3 +44,30 @@
     top: 5px;
     right: 5px;
 }
+
+
+
+.edit-form-images{
+    display: flex;
+    justify-content: start;
+    gap: 20px 0;
+    flex-wrap: wrap;
+}
+.edit-img-wrapper{
+    height: 100px;
+    width: 150px;
+}
+.edit-img-wrapper img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+
+
+
+.show-page-carousel img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
