@@ -1,29 +1,31 @@
-<main class="container my-5">
-    <h1 class="display-5 fw-bold mb-3">Campgrounds</h1>
-    <%- include('../partials/flash.ejs') %> 
+<% layout('layouts/boilerplate')%>
+<div id="cluster-map"></div>
+<div class="container my-4">
+    <h1>All Campgrounds</h1>
+    <a href="/campgrounds/new">Add Campground</a>
 
     <% for(let campground of campgrounds){ %> 
-    <div class="card my-2">
-        <div class="row">
-            <div class="col-md-4">
-                <img src="<%=campground.images[0].url%>" alt="image loading error" class="img-fluid">
-            </div>
-            <div class="col-md-8 card-body">
-                <h4 class="card-title"><%= campground.title %></h4>
-                <p class="card-text"><%= campground.description %></p>
-                <small class="text-muted"><%= campground.location %></small>
-                <br>
-                <br>
-                <a href="/campgrounds/<%=campground._id%>" class="card-link">Visit</a>
+        <div class="card my-3">
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="<%=campground.images[0].url%>" alt="image loading error" class="img-fluid">
+                </div>
+                <div class="col-md-8 card-body">
+                    <h4 class="card-title"><%= campground.title %></h4>
+                    <p class="card-text"><%= campground.description %></p>
+                    <small class="text-muted"><%= campground.location %></small>
+                    <br>
+                    <br>
+                    <a href="/campgrounds/<%=campground._id%>" class="card-link">Visit</a>
+                </div>
             </div>
         </div>
-    </div>
-    <% } %>
-</main>
+        <% } %>
+</div>
 
 <script>
-    const navLink = document.getElementById(`nav-camp`);
-    window.addEventListener(`load`, () => {
-        navLink.classList.add(`nav-active`);
-    })
+    const mapToken = '<%-process.env.MAPBOX_TOKEN%>';
+    const campgrounds = { features: <%- JSON.stringify(campgrounds) %>}
 </script>
+
+<script src="/javascripts/clusterMap.js"></script>
